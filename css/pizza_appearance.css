@@ -1,0 +1,278 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    width: 100%; /* Changed to 100% to cover full width */
+    top: 0;
+    z-index: 1000; 
+    box-sizing: border-box;
+}
+
+ .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    font-weight: bold;
+    color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 10px;
+    background-color: #e67e22;
+    z-index: 1010; 
+}
+
+hr{
+    width: 100%;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.contact-info span {
+    margin: 0 10px;
+    font-size: 16px;
+    color: #adadad; 
+}
+
+.head-info{
+    width: 100%;
+}
+
+.bottom-bar{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+
+.bottom-bar span {
+    font-size: 16px;
+    color: #ffffff;
+    margin-left: 10px;
+
+}
+
+aside {
+    position: fixed;
+    bottom: 0;
+    left: 10px;
+    z-index: 1000;
+}
+
+.discount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    left: 10px;
+    background-color: #e67e22;
+    z-index: 1010; 
+}
+
+nav {
+    background-color: #ffffff;
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    margin-top: 80px;
+    background-color: #fff2b2;
+    
+}
+
+aside {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.pizzas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 20px;
+    flex: 1;
+}
+
+
+.pizza {
+    background-color: #fff;
+    border: 1px solid #cdcdcd;
+    margin: 10px;
+    width: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pizza img {
+    width: 100%;
+}
+
+.pizza .details {
+    padding: 15px;
+}
+
+.pizza .details h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #e67e22;
+}
+
+.pizza .details p {
+    font-size: 14px;
+    color: #555;
+}
+
+.pizza .details .price {
+    margin: 10px 0;
+}
+
+.pizza .details .price span {
+    display: block;
+    color: #333;
+}
+
+.pizza .details button{
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.pizza .details button:hover , header .login:hover {
+    background-color: #d35400;
+}
+
+.pizzas h1{
+    justify-content: center;
+    
+}
+
+h1 .badge{
+    margin-left: 5px;
+    background-color: rgb(239, 130, 13);
+    padding: 2px 9px;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+
+}
+
+.pizzas button{
+    color: #e67e22;
+    background-color: #ffffff;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.login{
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 10%;
+}
+
+
+
+.order-summary {
+    background-color: #f8f8f8;
+    padding: 20px;
+    width: 250px;
+    border-left: 1px solid #ddd;
+    /* position: fixed; */
+}
+
+.order-summary h2 {
+    margin-top: 0;
+}
+
+.order-summary ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.order-summary ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-summary .total {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.order-summary button {
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.order-summary button:hover {
+    background-color: #d35400;
+}
