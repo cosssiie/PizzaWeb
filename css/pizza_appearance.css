@@ -51,13 +51,11 @@ header {
 .logo::before {
     left: 0;
     border-width: 30px 50px 0px 0px;
-
 }
 
 .logo::after {
     right: 0;
     border-width: 30px 0px 0px 50px;
-
 }
 
 
@@ -80,6 +78,7 @@ hr{
 }
 
 .head-info{
+    
     width: 100%;
 }
 
@@ -188,6 +187,8 @@ aside {
     width: 100%;
 }
 
+
+
 .pizza .details {
     padding: 15px;
 }
@@ -207,7 +208,7 @@ aside {
     margin: 10px 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .pizza .details .price .price-item {
@@ -221,6 +222,8 @@ aside {
     display: block;
     color: #333;
     margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 .pizza .details .price .price-item button {
@@ -236,6 +239,43 @@ aside {
 .pizza .details .price .price-item button:hover {
     background-color: #d35400;
 }
+
+
+.weightSize img{
+    width: 70% ;
+    height: 70%;
+}
+
+.weightSize{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.weightSize .thirtyCm , .weightSize .fortyCm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.weightSize .thirtyCm .size, .weightSize .thirtyCm .weight{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.weightSize .fortyCm .size, .weightSize .fortyCm .weight{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.weightSize span {
+    font-size: 14px;
+    color: #000000;
+}
+
 
 
 
