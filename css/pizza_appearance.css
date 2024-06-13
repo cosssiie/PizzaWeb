@@ -5,6 +5,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    box-sizing: border-box;
+    min-width: 500px;
 }
 
 header {
@@ -66,10 +68,18 @@ hr {
 
 .contact-info {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-grow: 1;
     width: 100%;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 70%;
 }
 
 .contact-info span {
@@ -126,7 +136,6 @@ aside {
     content: "";
     position: absolute;
     top: -30px;
-    /* Позиционирование снизу блока */
     width: 0;
     height: 0;
     border-style: solid;
@@ -134,35 +143,32 @@ aside {
 
 .discount::before {
     left: 0;
-    /* Позиционирование слева */
     border-width: 0px 50px 30px 0;
-    /* Перевернутый треугольник */
     border-color: transparent transparent #e67e22 transparent;
-    /* Цвет треугольника */
 }
 
 .discount::after {
     right: 0;
-    /* Позиционирование справа */
     border-width: 0 0 30px 50px;
-    /* Перевернутый треугольник */
     border-color: transparent transparent #e67e22 transparent;
-    /* Цвет треугольника */
 }
 
 
 nav {
-    background-color: #fff6c7;
+    box-sizing: border-box;
+    background-color: #ffffff;
     height: 50px;
 }
 
 
 .pizzas-header {
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 0;
-    background-color: #fff6c7;
+    background-color: #ffffff;
 }
 
 .pizzas-header h1 {
@@ -185,10 +191,11 @@ nav ul li a {
 }
 
 main {
+    box-sizing: border-box;
     display: flex;
     flex: 1;
     margin-top: 80px;
-    background-color: #fff6c7;
+    background-color: #ffffff;
 
 }
 
@@ -198,6 +205,7 @@ aside {
 }
 
 .pizzas {
+    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -205,6 +213,7 @@ aside {
 }
 
 .pizza_container {
+    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -213,6 +222,7 @@ aside {
 }
 
 .pizza {
+    box-sizing: border-box;
     position: relative;
     background-color: #fff;
     border: 1px solid #cdcdcd;
@@ -357,9 +367,9 @@ aside {
 }
 
 .order-summary h2 {
-    font-size: 18px;
-    ;
+    white-space: nowrap;
 }
+
 
 h1 .badge,
 h2 .badge {
@@ -461,7 +471,7 @@ h2 .badge {
     align-items: center;
     flex-direction: row;
     margin-right: 10px;
- 
+
 }
 
 .order-summary .size span,
@@ -471,7 +481,7 @@ h2 .badge {
 
 .order-summary img {
     width: 40%;
-    height: 60%;
+    height: 80%;
 }
 
 .order-summary .correctionSection {
@@ -548,4 +558,212 @@ h2 .badge {
 
 .order-summary .cancel:hover {
     background-color: #595553;
+}
+
+
+@media screen and (max-width: 1100px) {
+
+    .head-info .contact {
+        width: auto;
+    }
+
+    .order-summary {
+        width: auto;
+        border-left: none;
+    }
+
+    .header-row {
+        width: auto;
+        height: auto;
+        font-size: 14px;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+
+    .pizza_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .pizza {
+        width: auto;
+        margin-bottom: 20px;
+    }
+
+    .pizza img {
+        width: 100%;
+        height: auto;
+    }
+
+    .details {
+        padding: 10px;
+    }
+
+
+    .weightSize {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .weightSize .thirtyCm,
+    .weightSize .fortyCm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .weightSize .thirtyCm .size,
+    .weightSize .thirtyCm .weight {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .weightSize .fortyCm .size,
+    .weightSize .fortyCm .weight {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .price {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .price .price-item {
+        margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .contact {
+        width: auto;
+    }
+
+    .pizzas-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .pizzas-header h1 {
+        font-size: 24px;
+    }
+
+    .pizzas-header nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .pizzas-header nav ul li {
+        margin: 5px 0;
+    }
+
+    .pizza_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pizza {
+        width: auto;
+        margin-bottom: 20px;
+    }
+
+    .pizza img {
+        width: auto;
+        height: auto;
+    }
+
+    .details {
+        padding: 10px;
+        text-align: center;
+    }
+
+
+    .weightSize {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .weightSize .thirtyCm,
+    .weightSize .fortyCm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .weightSize .thirtyCm .size,
+    .weightSize .thirtyCm .weight {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .weightSize .fortyCm .size,
+    .weightSize .fortyCm .weight {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .price {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .price .price-item {
+        margin: 10px 0;
+    }
+
+    .head-info .contact {
+        width: auto;
+        font-size: 10px;
+    }
+
+    .order-summary {
+        width: auto;
+        border-left: none;
+    }
+
+    .header-row {
+        width: auto;
+        height: auto;
+        font-size: 10px;
+    }
+
+    .order-summary img {
+        width: 100%;
+        height: auto;
+    }
+
+    .order-summary .weightSize,
+    .order-summary .correctionSection {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .correctionSection .supply,
+    .correctionSection .add,
+    .correctionSection .cancel {
+        width: auto;
+    }
+
+    .order-summary .buy {
+        width: 100%;
+    }
 }
