@@ -218,12 +218,17 @@ aside {
     margin-right: 10px;
 }
 
-.pizza .details .price .price-item span {
+.pizza .details .price .price-item .money {
     display: block;
     color: #333;
-    margin-bottom: 5px;
-    font-size: 22px;
+    margin-bottom: 0px;
+    font-size: 24px;
     font-weight: bold;
+}
+
+.pizza .details .price .price-item .currency{
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .pizza .details .price .price-item button {
@@ -275,8 +280,6 @@ aside {
     font-size: 14px;
     color: #000000;
 }
-
-
 
 
 .pizzas h1{
