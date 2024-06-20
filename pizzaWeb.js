@@ -1,3 +1,78 @@
+document.addEventListener('DOMContentLoaded', function() {
+    generatePizzaCards(pizza_info);
+    addClearAllHandler();
+    loadCart();
+    updateBadge(document.querySelectorAll('#boughtItems li').length);
+
+    document.querySelector('.all').addEventListener('click', () => filterPizzas('all'));
+    document.querySelector('.meat').addEventListener('click', () => filterPizzas('meat'));
+    document.querySelector('.pineapple').addEventListener('click', () => filterPizzas('pineapple'));
+    document.querySelector('.mushroom').addEventListener('click', () => filterPizzas('mushroom'));
+    document.querySelector('.ocean').addEventListener('click', () => filterPizzas('ocean'));
+    document.querySelector('.vega').addEventListener('click', () => filterPizzas('vega'));
+
+    const filters = document.querySelectorAll('#pizza-filter');
+
+    filters.forEach(filter => {
+        filter.addEventListener('click', (event) => {
+            event.preventDefault();
+    
+            filters.forEach(f => f.classList.remove('all'));
+    
+            event.target.classList.add('all');
+        });
+    });
+});
+
+function saveCart() {
+    const cart = [];
+    document.querySelectorAll('#boughtItems li').forEach(item => {
+        cart.push({
+            id: item.dataset.id,
+            name: item.querySelector('.name').textContent,
+            size: item.querySelector('.size span').textContent,
+            weight: item.querySelector('.weight span').textContent,
+            price: item.querySelector('.price').textContent,
+            quantity: item.querySelector('.count').textContent
+        });
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function loadCart() {
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    if (cart) {
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.dataset.id = item.id;
+            li.innerHTML = `
+                <span class="name">${item.name}</span>
+                <div class="weightSize">
+                    <div class="size">
+                        <img src="images/size-icon.png" alt="sizeOfPizza">
+                        <span>${item.size}</span>
+                    </div>
+                    <div class="weight">
+                        <img src="images/weight.png" alt="weightOfPizza">
+                        <span>${item.weight}</span>
+                    </div>
+                </div>
+                <div class="correctionSection">
+                    <span class="price">${item.price}</span>
+                    <button class="supply">-</button>
+                    <span class="count">${item.quantity}</span>
+                    <button class="add">+</button>
+                    <button class="cancel">x</button>
+                </div>
+            `;
+            document.querySelector('#boughtItems').appendChild(li);
+            addQuantityHandlers(li);
+            addDeleteHandler(li);
+        });
+        updateTotal();
+    }
+}
+
 function addQuantityHandlers(item) {
     let itemQuantity = item.querySelector('.count');
     let plus = item.querySelector('.add');
@@ -10,6 +85,7 @@ function addQuantityHandlers(item) {
         itemQuantity.textContent = newQuantity;
         price.textContent = (basePrice * newQuantity) + ' грн';
         minus.classList.remove('disabled');
+        saveCart();
         updateTotal();
     });
 
@@ -19,11 +95,13 @@ function addQuantityHandlers(item) {
             let newQuantity = currentQuantity - 1;
             itemQuantity.textContent = newQuantity;
             price.textContent = (basePrice * newQuantity) + ' грн';
+            saveCart();
             updateTotal();
         }
         if (currentQuantity === 1) {
             let listItem = this.closest('li');
             listItem.remove();
+            saveCart();
             updateTotal();
         }
     });
@@ -47,22 +125,22 @@ function updateBadge(itemCount) {
     badge.textContent = itemCount;
 }
 
-
 function addDeleteHandler(item) {
     let cancelButton = item.querySelector('.cancel');
     cancelButton.addEventListener('click', function () {
         let listItem = this.closest('li');
         listItem.remove();
+        saveCart();
         updateTotal();
     });
 }
-
 
 function addClearAllHandler() {
     let clearButton = document.querySelector('.delete');
     clearButton.addEventListener('click', function () {
         let items = document.querySelectorAll('#boughtItems li');
         items.forEach(item => item.remove());
+        saveCart();
         updateTotal();
     });
 }
@@ -123,10 +201,12 @@ function addToCartHandler() {
                 addQuantityHandlers(cartItem);
                 addDeleteHandler(cartItem);
             }
+            saveCart();
             updateTotal();
         });
     });
 }
+
 function generatePizzaCards(pizzas) {
     const pizzaContainer = document.getElementById('pizza-container');
     pizzaContainer.innerHTML = '';
@@ -221,28 +301,3 @@ function filterPizzas(category) {
     generatePizzaCards(filteredPizzas);
     document.getElementById('pizza-count').textContent = filteredPizzas.length;
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    generatePizzaCards(pizza_info);
-    addClearAllHandler();
-    updateBadge(document.querySelectorAll('#boughtItems li').length);
-
-    document.querySelector('.all').addEventListener('click', () => filterPizzas('all'));
-    document.querySelector('.meat').addEventListener('click', () => filterPizzas('meat'));
-    document.querySelector('.pineapple').addEventListener('click', () => filterPizzas('pineapple'));
-    document.querySelector('.mushroom').addEventListener('click', () => filterPizzas('mushroom'));
-    document.querySelector('.ocean').addEventListener('click', () => filterPizzas('ocean'));
-    document.querySelector('.vega').addEventListener('click', () => filterPizzas('vega'));
-    const filters = document.querySelectorAll('#pizza-filter');
-
-    filters.forEach(filter => {
-        filter.addEventListener('click', (event) => {
-            event.preventDefault();
-
-            filters.forEach(f => f.classList.remove('all'));
-
-            event.target.classList.add('all');
-        });
-    });
-
-});
