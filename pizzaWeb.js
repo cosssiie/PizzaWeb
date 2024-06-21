@@ -14,9 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const filters = document.querySelectorAll('#pizza-filter');
 
     filters.forEach(filter => {
-        filter.addEventListener('click', (event) => {
-            event.preventDefault();
-    
+        filter.addEventListener('click', (event) => {    
             filters.forEach(f => f.classList.remove('all'));
     
             event.target.classList.add('all');
@@ -84,7 +82,6 @@ function addQuantityHandlers(item) {
         let newQuantity = Number(itemQuantity.textContent) + 1;
         itemQuantity.textContent = newQuantity;
         price.textContent = (basePrice * newQuantity) + ' грн';
-        minus.classList.remove('disabled');
         saveCart();
         updateTotal();
     });
